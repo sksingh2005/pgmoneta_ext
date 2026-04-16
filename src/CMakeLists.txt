@@ -50,6 +50,11 @@ else (EXT_LIB_DIR)
 endif (EXT_LIB_DIR)
 
 #
+# OpenSSL
+#
+find_package(OpenSSL REQUIRED)
+
+#
 # OS
 #
 if (${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
@@ -64,6 +69,7 @@ if (${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
     ${CMAKE_CURRENT_SOURCE_DIR}/include
     ${EXT_INCLUDE_DIR}
     ${EXT_INCLUDE_SERVER_DIR}
+    ${OPENSSL_INCLUDE_DIR}
   )
 
   #
@@ -71,6 +77,7 @@ if (${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
   #
   link_libraries(
     ${EXT_LIB_DIR}/libpq.so
+    ${OPENSSL_CRYPTO_LIBRARY}
   )
 
 else()
@@ -87,6 +94,7 @@ else()
     ${CMAKE_CURRENT_SOURCE_DIR}/include
     ${EXT_INCLUDE_DIR}
     ${EXT_INCLUDE_SERVER_DIR}
+    ${OPENSSL_INCLUDE_DIR}
   )
 
   #
@@ -94,6 +102,7 @@ else()
   #
   link_libraries(
     ${EXT_LIB_DIR}/libpq.so
+    ${OPENSSL_CRYPTO_LIBRARY}
   )
 endif()
 

@@ -1,12 +1,12 @@
 Name:          pgmoneta_ext
-Version:       0.1.0
+Version:       0.1.1
 Release:       1%{dist}
 Summary:       An extension to enhance the functionality of the main pgmoneta project.
 License:       BSD
 URL:           https://github.com/pgmoneta/pgmoneta_ext
 Source0:       https://github.com/pgmoneta/pgmoneta_ext/archive/%{version}.tar.gz
 
-BuildRequires: git gcc cmake make postgresql-server postgresql-server-devel
+BuildRequires: git gcc cmake make postgresql-server postgresql-server-devel openssl-devel
 Requires:      postgresql-server
 
 %description

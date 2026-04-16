@@ -29,7 +29,7 @@
 * [PostgreSQL](https://www.postgresql.org)
 
 ```sh
-dnf install git gcc cmake make postgresql-server-devel
+dnf install git gcc cmake make postgresql-server-devel openssl-devel
 ```
 
 Alternative [clang 8+](https://clang.llvm.org/) can be used.

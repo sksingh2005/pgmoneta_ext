@@ -17,7 +17,7 @@ for Fedora 40, this will install PostgreSQL 15
 #### Basic dependencies
 
 ``` sh
-dnf install git gcc cmake make postgresql-server-devel
+dnf install git gcc cmake make postgresql-server-devel openssl-devel
 ```
 
 #### Generate user and developer guide
@@ -222,7 +222,7 @@ You should see
 ``` console
  pgmoneta_ext_version 
 ----------------------
- 0.1.0
+ 0.1.1
 (1 row)
 ```
 

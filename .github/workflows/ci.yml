@@ -10,7 +10,7 @@ on:
       - main
 
 jobs:
-  test-postgresql-14:
+  test-postgresql-14-build:
     runs-on: ubuntu-latest
 
     steps:
@@ -67,6 +67,7 @@ jobs:
 
           test_pgmoneta_ext(){
             sudo -u postgres /usr/local/pgsql/bin/psql -U postgres -c "SELECT pgmoneta_ext_version();"
+            sudo -u postgres /usr/local/pgsql/bin/psql -U postgres -c "SELECT pgmoneta_ext_fips();"
             sudo -u postgres /usr/local/pgsql/bin/psql -U postgres -c "DROP ROLE repl;"
             sudo -u postgres /usr/local/pgsql/bin/pg_ctl -D /tmp/pgsql-${version} -l /tmp/logfile stop
           }
@@ -137,6 +138,7 @@ jobs:
 
           test_pgmoneta_ext(){
             sudo -u postgres /usr/local/pgsql/bin/psql -U postgres -c "SELECT pgmoneta_ext_version();"
+            sudo -u postgres /usr/local/pgsql/bin/psql -U postgres -c "SELECT pgmoneta_ext_fips();"
             sudo -u postgres /usr/local/pgsql/bin/psql -U postgres -c "DROP ROLE repl;"
             sudo -u postgres /usr/local/pgsql/bin/pg_ctl -D /tmp/pgsql-${version} -l /tmp/logfile stop
           }
@@ -206,6 +208,7 @@ jobs:
 
           test_pgmoneta_ext(){
             sudo -u postgres /usr/local/pgsql/bin/psql -U postgres -c "SELECT pgmoneta_ext_version();"
+            sudo -u postgres /usr/local/pgsql/bin/psql -U postgres -c "SELECT pgmoneta_ext_fips();"
             sudo -u postgres /usr/local/pgsql/bin/psql -U postgres -c "DROP ROLE repl;"
             sudo -u postgres /usr/local/pgsql/bin/pg_ctl -D /tmp/pgsql-${version} -l /tmp/logfile stop
           }
@@ -275,6 +278,7 @@ jobs:
 
           test_pgmoneta_ext(){
             sudo -u postgres /usr/local/pgsql/bin/psql -U postgres -c "SELECT pgmoneta_ext_version();"
+            sudo -u postgres /usr/local/pgsql/bin/psql -U postgres -c "SELECT pgmoneta_ext_fips();"
             sudo -u postgres /usr/local/pgsql/bin/psql -U postgres -c "DROP ROLE repl;"
             sudo -u postgres /usr/local/pgsql/bin/pg_ctl -D /tmp/pgsql-${version} -l /tmp/logfile stop
           }
@@ -344,6 +348,7 @@ jobs:
 
           test_pgmoneta_ext(){
             sudo -u postgres /usr/local/pgsql/bin/psql -U postgres -c "SELECT pgmoneta_ext_version();"
+            sudo -u postgres /usr/local/pgsql/bin/psql -U postgres -c "SELECT pgmoneta_ext_fips();"
             sudo -u postgres /usr/local/pgsql/bin/psql -U postgres -c "DROP ROLE repl;"
             sudo -u postgres /usr/local/pgsql/bin/pg_ctl -D /tmp/pgsql-${version} -l /tmp/logfile stop
           }

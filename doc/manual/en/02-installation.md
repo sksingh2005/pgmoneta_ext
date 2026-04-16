@@ -55,7 +55,7 @@ We recommend using Fedora to test and run [**pgmoneta_ext**][pgmoneta_ext], but 
 * [PostgreSQL][postgresql]
 
 ```sh
-dnf install git gcc cmake make postgresql-server postgresql-server-devel
+dnf install git gcc cmake make postgresql-server postgresql-server-devel openssl-devel
 ```
 
 ### RHEL / RockyLinux

@@ -31,6 +31,10 @@
 #include <pgmoneta_ext.h>
 #include <utils.h>
 
+/* OpenSSL */
+#include <openssl/crypto.h>
+#include <openssl/evp.h>
+
 /* PostgreSQL */
 #include <postgres.h>
 #include <access/htup_details.h>
@@ -80,6 +84,7 @@ PG_FUNCTION_INFO_V1(pgmoneta_ext_get_file);
 PG_FUNCTION_INFO_V1(pgmoneta_ext_get_files);
 PG_FUNCTION_INFO_V1(pgmoneta_ext_receive_file_chunk);
 PG_FUNCTION_INFO_V1(pgmoneta_ext_promote);
+PG_FUNCTION_INFO_V1(pgmoneta_ext_fips);
 
 Datum
 pgmoneta_ext_version(PG_FUNCTION_ARGS)
@@ -582,6 +587,22 @@ pgmoneta_ext_promote(PG_FUNCTION_ARGS)
       ereport(ERROR, errmsg_internal("pgmoneta_ext_promote: Current role is not a superuser"));
       PG_RETURN_BOOL(false);
    }
+}
+
+Datum
+pgmoneta_ext_fips(PG_FUNCTION_ARGS)
+{
+   int fips_enabled = 0;
+
+#if OPENSSL_VERSION_NUMBER >= 0x30000000L
+   /* OpenSSL 3.0+ */
+   fips_enabled = EVP_default_properties_is_fips_enabled(NULL);
+#elif OPENSSL_VERSION_NUMBER >= 0x10100000L
+   /* OpenSSL 1.1.0+ */
+   fips_enabled = FIPS_mode();
+#endif
+
+   PG_RETURN_BOOL(fips_enabled == 1);
 }
 
 static bytea*
